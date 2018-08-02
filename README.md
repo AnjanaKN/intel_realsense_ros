@@ -14,17 +14,17 @@ Any of these versions work(4.4.0-.., 4.8.0-.., 4.10.0-.. , 4.13.0-..or 4.15.0).
 4.Navigate to librealsense root directory to run the following scripts.
    (Unplug the camera if connected)
  ```sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
- sudo apt-get install libglfw3-dev
+    sudo apt-get install libglfw3-dev
  ```
  
 5.Requires cmake version 3.8+ which is currently not made available via apt manager for Ubuntu LTS.   
 Go to the [official CMake site](https://cmake.org/download/) to download and install the latest cmake version.
 6.Install Intel Realsense permission scripts located in librealsense source directory:
-  ```
+
    cd to the extracted librealsense root folder
-   sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
-   sudo udevadm control --reload-rules && udevadm trigger
-   ./scripts/patch-realsense-ubuntu-lts.sh
+     ```sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+         sudo udevadm control --reload-rules && udevadm trigger
+          ./scripts/patch-realsense-ubuntu-lts.sh
 ```
 7.Tracking Module requires hid_sensor_custom kernel module to operate properly.
     ``` echo 'hid_sensor_custom' | sudo tee -a /etc/modules```
