@@ -19,14 +19,15 @@ Any of these versions work(4.4.0-.., 4.8.0-.., 4.10.0-.. , 4.13.0-..or 4.15.0).
  
 5.Requires cmake version 3.8+ which is currently not made available via apt manager for Ubuntu LTS.   
 Go to the [official CMake site](https://cmake.org/download/) to download and install the latest cmake version.
-6.Install Intel Realsense permission scripts located in librealsense source directory:
 
-   cd to the extracted librealsense root folder
+6.Install Intel Realsense permission scripts located in librealsense source directory.
+cd to the extracted librealsense root folder:
+
      ```sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
         sudo udevadm control --reload-rules && udevadm trigger
          ./scripts/patch-realsense-ubuntu-lts.sh```
 
-7.Tracking Module requires hid_sensor_custom kernel module to operate properly.
+7. Tracking Module requires hid_sensor_custom kernel module to operate properly:
     ``` echo 'hid_sensor_custom' | sudo tee -a /etc/modules```
 8.Make sure gcc version is >=5.0 by typing ```gcc -v```
 9.Navigate to librealsense root directory and run:
@@ -38,28 +39,30 @@ Go to the [official CMake site](https://cmake.org/download/) to download and ins
 	sudo make uninstall && make clean && make && sudo make install
 
 KERNEL PATCH:
-
-```sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key C8B3A55A6F3EFCDE
+1. 
+   ```sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key C8B3A55A6F3EFCDE
    sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u
    sudo rm -f /etc/apt/sources.list.d/realsense-public.list
-   sudo apt-get update
+   sudo apt-get update```
+2.
+      sudo apt-get install librealsense2-dkms
+      sudo apt-get install librealsense2-utils
+      sudo apt-get install librealsense2-dev
+      sudo apt-get install librealsense2-dbg
 
-   sudo apt-get install librealsense2-dkms
-   sudo apt-get install librealsense2-utils
-   sudo apt-get install librealsense2-dev
-   sudo apt-get install librealsense2-dbg```
-Verify that the kernel is updated(should include realsense string) :
-	modinfo uvcvideo | grep "version:" ```
+
+3. Verify that the kernel is updated(should include realsense string) :
+       ```modinfo uvcvideo | grep "version:"```
 
 
 
 ROS WRAPPER:
 
-
+1.
 ``` mkdir -p ~/catkin_ws/src```
 ```cd ~/catkin_ws/src/```
-2.Clone the files from https://github.com/intel-ros/realsense/releases to catkin_ws/src
-```catkin_init_workspace 
+2. Clone the files from https://github.com/intel-ros/realsense/releases to catkin_ws/src
+     ```catkin_init_workspace 
 	cd ..
 	catkin_make clean
 	catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release
