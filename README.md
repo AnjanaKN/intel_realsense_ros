@@ -23,9 +23,9 @@ Go to the [official CMake site](https://cmake.org/download/) to download and ins
 
    cd to the extracted librealsense root folder
      ```sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
-         sudo udevadm control --reload-rules && udevadm trigger
-          ./scripts/patch-realsense-ubuntu-lts.sh
-```
+        sudo udevadm control --reload-rules && udevadm trigger
+         ./scripts/patch-realsense-ubuntu-lts.sh```
+
 7.Tracking Module requires hid_sensor_custom kernel module to operate properly.
     ``` echo 'hid_sensor_custom' | sudo tee -a /etc/modules```
 8.Make sure gcc version is >=5.0 by typing ```gcc -v```
@@ -39,17 +39,17 @@ Go to the [official CMake site](https://cmake.org/download/) to download and ins
 
 KERNEL PATCH:
 
-```sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key C8B3A55A6F3EFCDE```
-```sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u```
-```sudo rm -f /etc/apt/sources.list.d/realsense-public.list```
-```sudo apt-get update```
+```sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key C8B3A55A6F3EFCDE
+   sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main" -u
+   sudo rm -f /etc/apt/sources.list.d/realsense-public.list
+   sudo apt-get update
 
-```sudo apt-get install librealsense2-dkms
-sudo apt-get install librealsense2-utils```
-```sudo apt-get install librealsense2-dev
-sudo apt-get install librealsense2-dbg```
+   sudo apt-get install librealsense2-dkms
+   sudo apt-get install librealsense2-utils
+   sudo apt-get install librealsense2-dev
+   sudo apt-get install librealsense2-dbg```
 Verify that the kernel is updated(should include realsense string) :
-	```modinfo uvcvideo | grep "version:" ```
+	modinfo uvcvideo | grep "version:" ```
 
 
 
