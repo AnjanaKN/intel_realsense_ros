@@ -6,9 +6,9 @@ For Ubuntu 16.04
 
 LIBREALSENSE SDK:
 
-1. ```
+1. 
 	sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
-```
+
 2. Make sure the kernel version is >4.4 (check kernel version with "uname -r" command.
 Any of these versions work(4.4.0-.., 4.8.0-.., 4.10.0-.. , 4.13.0-..or 4.15.0).
 3. Download and unzip https://github.com/IntelRealSense/librealsense.git
